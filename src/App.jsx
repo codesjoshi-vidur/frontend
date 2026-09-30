@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { env } from './config.js'
 
 function App() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/staging-api/test')
+      .get(`${env.API_URL}/staging-api/test`)
       .then((res) => setData(res.data))
       .catch((err) => setData({ error: err.message }))
   }, [])
